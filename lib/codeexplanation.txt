@@ -1,0 +1,48 @@
+Imports:
+
+We start by importing necessary packages:
+flutter/material.dart: Provides Flutter framework and material design widgets.
+dart:async: Provides utilities for asynchronous programming.
+dart:math: Provides mathematical functions.
+
+Main App Class (MyApp):
+This class is a stateless widget representing the main application.
+It returns a MaterialApp widget, which is the root widget of our application. It sets the title and theme of the app and defines the home screen as an instance of PlasticSwapGame.
+
+PlasticSwapGame Class:
+This class is a stateful widget representing the main game screen.
+It contains various properties and methods to manage the game state, including:
+     Lists of items (items) and shuffled items (shuffledItems).
+     Integer variables for moves, remaining moves, score, and time left.
+     Timer object (timer) to manage the game timer.
+     Boolean flags for game status (gameEnded) and tutorial mode (tutorialMode).
+     Integer variable to track the current tutorial step (tutorialStep).
+
+In the initState() method, we initialize the game state by shuffling the items and starting the timer.
+
+The dispose() method cancels the timer when the widget is removed from the tree to prevent memory leaks.
+
+The startTimer() method initializes and starts the game timer using a periodic timer that updates every second.
+
+The swapItems() method is called when two items are swapped by the player. It updates the game state accordingly.
+
+The checkGameStatus() method checks if the game is over based on remaining moves or a correct solution.
+
+The isSolutionCorrect() method checks if the current arrangement of items meets the win condition.
+
+The endGame() method is called when the game ends. It cancels the timer and calculates the final score.
+
+The nextTutorialStep() method progresses to the next step of the tutorial.
+
+The resetGame() method resets the game state to its initial values.
+
+The build() method constructs the UI of the game screen using various widgets:
+      An AppBar displaying the game title.
+      A conditional display of either the tutorial screen or the game screen based on the tutorialMode.
+      A Column widget containing game elements such as moves, time left, and the game grid.
+      The game grid is built using a GridView.builder widget, with each item represented as a draggable Container.
+
+GameOverScreen Class:
+   This class is a stateless widget representing the game over screen.
+   It takes the final score and a callback function (onReset) as input parameters.
+   The build() method constructs the UI of the game over screen, displaying the final score and a button to reset the game.
